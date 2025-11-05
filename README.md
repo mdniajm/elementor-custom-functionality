@@ -60,7 +60,6 @@ Upgrades the **Button** widget to support full icon styling (similar to Icon Box
 
 ### ✅ Option A — Add to `functions.php`
 
-```php
 require_once get_stylesheet_directory() . '/basic-gallery-image-sizing.php';
 require_once get_stylesheet_directory() . '/icon-box-icon-margin.php';
 require_once get_stylesheet_directory() . '/extend-button-widget-icon.php';
