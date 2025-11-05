@@ -5,7 +5,7 @@ add_action(
   function( $element, $args ) {
     /** @var \Elementor\Widget_Base $element */
     $element->start_controls_section(
-      'my_gallery_image_size_controls',
+      'nm_gallery_image_size_controls',
       [
         'label' => __( 'Image Sizing', 'your-textdomain' ),
         'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
@@ -13,7 +13,7 @@ add_action(
     );
 
     $element->add_responsive_control(
-      'my_gallery_image_width',
+      'nm_gallery_image_width',
       [
         'label' => __( 'Image Width', 'your-textdomain' ),
         'type'  => \Elementor\Controls_Manager::SLIDER,
@@ -30,7 +30,7 @@ add_action(
     );
 
     $element->add_responsive_control(
-      'my_gallery_image_height',
+      'nm_gallery_image_height',
       [
         'label' => __( 'Image Height', 'your-textdomain' ),
         'type'  => \Elementor\Controls_Manager::SLIDER,
@@ -48,7 +48,7 @@ add_action(
     );
 
     $element->add_control(
-      'my_gallery_image_object_fit',
+      'nm_gallery_image_object_fit',
       [
         'label' => __( 'Object Fit', 'your-textdomain' ),
         'type' => \Elementor\Controls_Manager::SELECT,
@@ -68,7 +68,7 @@ add_action(
     );
 
     $element->add_control(
-      'my_gallery_image_object_position',
+      'nm_gallery_image_object_position',
       [
         'label' => __( 'Object Position', 'your-textdomain' ),
         'type'  => \Elementor\Controls_Manager::SELECT,
@@ -88,7 +88,7 @@ add_action(
           '{{WRAPPER}} .gallery-item img' => 'object-position: {{VALUE}};',
         ],
         'condition' => [
-          'my_gallery_image_object_fit!' => '',
+          'nm_gallery_image_object_fit!' => '',
         ]
       ]
     );
