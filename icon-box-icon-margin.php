@@ -5,7 +5,7 @@ add_action(
   function( $element, $args ) {
     /** @var \Elementor\Widget_Base $element */
     $element->start_controls_section(
-      'my_icon_box_extra_spacing',
+      'nm_icon_box_extra_spacing',
       [
         'label' => __( 'Extra Spacing', 'your-textdomain' ),
         'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
@@ -16,7 +16,7 @@ add_action(
     );
 
     $element->add_responsive_control(
-      'my_icon_margin',
+      'nm_icon_margin',
       [
         'label' => __( 'Icon Margin', 'your-textdomain' ),
         'type'  => \Elementor\Controls_Manager::DIMENSIONS,
