@@ -1,0 +1,100 @@
+<?php
+// Add custom image sizing and fitting controls to Elementor's Basic Gallery widget
+add_action(
+  'elementor/element/image-gallery/section_gallery_images/after_section_end',
+  function( $element, $args ) {
+    /** @var \Elementor\Widget_Base $element */
+    $element->start_controls_section(
+      'my_gallery_image_size_controls',
+      [
+        'label' => __( 'Image Sizing', 'your-textdomain' ),
+        'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
+      ]
+    );
+
+    $element->add_responsive_control(
+      'my_gallery_image_width',
+      [
+        'label' => __( 'Image Width', 'your-textdomain' ),
+        'type'  => \Elementor\Controls_Manager::SLIDER,
+        'size_units' => [ 'px', '%', 'vw', 'custom' ],
+        'range' => [
+          'px' => [ 'min' => 0, 'max' => 2000 ],
+          '%'  => [ 'min' => 0, 'max' => 100 ],
+          'vw' => [ 'min' => 0, 'max' => 100 ],
+        ],
+        'selectors' => [
+          '{{WRAPPER}} .gallery-item img' => 'width: {{SIZE}}{{UNIT}};',
+        ],
+      ]
+    );
+
+    $element->add_responsive_control(
+      'my_gallery_image_height',
+      [
+        'label' => __( 'Image Height', 'your-textdomain' ),
+        'type'  => \Elementor\Controls_Manager::SLIDER,
+        'size_units' => [ 'px', 'vh', '%', 'custom' ],
+        'range' => [
+          'px' => [ 'min' => 0, 'max' => 2000 ],
+          'vh' => [ 'min' => 0, 'max' => 100 ],
+          '%'  => [ 'min' => 0, 'max' => 100 ],
+        ],
+        'selectors' => [
+          '{{WRAPPER}} .gallery-item img' => 'height: {{SIZE}}{{UNIT}};',
+        ],
+        'description' => __( 'Use Object Fit to control image cropping.', 'your-textdomain' ),
+      ]
+    );
+
+    $element->add_control(
+      'my_gallery_image_object_fit',
+      [
+        'label' => __( 'Object Fit', 'your-textdomain' ),
+        'type' => \Elementor\Controls_Manager::SELECT,
+        'default' => '',
+        'options' => [
+          ''           => __( 'Default', 'your-textdomain' ),
+          'cover'      => __( 'Cover', 'your-textdomain' ),
+          'contain'    => __( 'Contain', 'your-textdomain' ),
+          'fill'       => __( 'Fill', 'your-textdomain' ),
+          'none'       => __( 'None', 'your-textdomain' ),
+          'scale-down' => __( 'Scale Down', 'your-textdomain' ),
+        ],
+        'selectors' => [
+          '{{WRAPPER}} .gallery-item img' => 'object-fit: {{VALUE}};',
+        ],
+      ]
+    );
+
+    $element->add_control(
+      'my_gallery_image_object_position',
+      [
+        'label' => __( 'Object Position', 'your-textdomain' ),
+        'type'  => \Elementor\Controls_Manager::SELECT,
+        'default' => '50% 50%',
+        'options' => [
+          '50% 50%'   => __( 'Center Center', 'your-textdomain' ),
+          '50% 0%'    => __( 'Center Top', 'your-textdomain' ),
+          '50% 100%'  => __( 'Center Bottom', 'your-textdomain' ),
+          '0% 50%'    => __( 'Left Center', 'your-textdomain' ),
+          '0% 0%'     => __( 'Left Top', 'your-textdomain' ),
+          '0% 100%'   => __( 'Left Bottom', 'your-textdomain' ),
+          '100% 50%'  => __( 'Right Center', 'your-textdomain' ),
+          '100% 0%'   => __( 'Right Top', 'your-textdomain' ),
+          '100% 100%' => __( 'Right Bottom', 'your-textdomain' ),
+        ],
+        'selectors' => [
+          '{{WRAPPER}} .gallery-item img' => 'object-position: {{VALUE}};',
+        ],
+        'condition' => [
+          'my_gallery_image_object_fit!' => '',
+        ]
+      ]
+    );
+
+    $element->end_controls_section();
+  },
+  10,
+  2
+);
