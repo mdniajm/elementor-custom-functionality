@@ -94,20 +94,6 @@ add_action( 'elementor/element/button/section_style/after_section_end', function
 		]
 	);
 
-	/* Gap between icon and text (supports icon left/right) */
-	$widget->add_responsive_control(
-		'button_icon_spacing',
-		[
-			'label'      => __( 'Icon Spacing', 'your-textdomain' ),
-			'type'       => \Elementor\Controls_Manager::SLIDER,
-			'size_units' => [ 'px', 'em', 'rem', 'custom' ],
-			'selectors'  => [
-				'{{WRAPPER}} .elementor-button .elementor-button-icon.elementor-align-icon-left'  => 'margin-right: {{SIZE}}{{UNIT}};',
-				'{{WRAPPER}} .elementor-button .elementor-button-icon.elementor-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
-			],
-		]
-	);
-
 	/* Padding inside the icon box (for stacked/framed) */
 	$widget->add_responsive_control(
 		'button_icon_padding',
